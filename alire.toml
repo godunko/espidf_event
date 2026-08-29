@@ -1,0 +1,22 @@
+name = "espidf_event"
+version = "0.1.0-dev"
+website = "https://github.com/godunko/espidf"
+description = "Ada/ESP-IDF: bindings for the Event Loop Library"
+long-description = """
+Ada bindings for the ESP-IDF Event Loop library, enabling event-driven architecture and asynchronous system notifications on Espressif microcontrollers.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "esp", "esp32", "espidf"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_base = "*"
+espidf = "*"
