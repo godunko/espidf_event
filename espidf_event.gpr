@@ -10,7 +10,6 @@ with "a0b_common.gpr";
 
 library project ESPIDF_Event is
 
-   for Languages use ("Ada", "C");
    for Library_Name use "adaespidf_event";
    for Library_Dir use ".libs/" & A0B_Common.Library_Dir_Suffix;
    for Object_Dir use ".objs/" & A0B_Common.Object_Dir_Suffix;
