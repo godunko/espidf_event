@@ -21,6 +21,8 @@ package ESPIDF.Event is
 
    type esp_event_handler_instance_t is private;
 
+   ESP_EVENT_ANY_ID : constant int32_t := -1;
+
    function esp_event_loop_create_default return esp_err_t
      with Import, Convention => C,
           External_Name => "esp_event_loop_create_default";
