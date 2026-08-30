@@ -29,6 +29,20 @@ package ESPIDF.Event is
 
    procedure esp_event_loop_create_default;
 
+   function esp_event_handler_register
+     (event_base        : esp_event_base_t;
+      event_id          : int32_t;
+      event_handler     : not null esp_event_handler_t;
+      event_handler_arg : System.Address) return esp_err_t
+     with Import, Convention => C,
+          External_Name => "esp_event_handler_register";
+
+   procedure esp_event_handler_register
+     (event_base        : esp_event_base_t;
+      event_id          : int32_t;
+      event_handler     : not null esp_event_handler_t;
+      event_handler_arg : System.Address);
+
    function esp_event_handler_instance_register
      (event_base        : esp_event_base_t;
       event_id          : int32_t;
