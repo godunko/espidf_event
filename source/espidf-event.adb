@@ -36,7 +36,7 @@ package body ESPIDF.Event is
      (event_base        : esp_event_base_t;
       event_id          : int32_t;
       event_handler     : not null esp_event_handler_t;
-      event_handler_arg : System.Address) is
+      event_handler_arg : System.Address := System.Null_Address) is
    begin
       Ada_ESP_Check_Error
         (esp_event_handler_register
