@@ -28,6 +28,48 @@ package body ESPIDF.Event is
            instance));
    end esp_event_handler_instance_register;
 
+   -------------------------------------------
+   -- esp_event_handler_instance_unregister --
+   -------------------------------------------
+
+   function esp_event_handler_instance_unregister
+     (event_base : esp_event_base_t;
+      event_id   : int32_t;
+      instance   : in out esp_event_handler_instance_t) return esp_err_t
+   is
+      function Imported
+        (event_base : esp_event_base_t;
+         event_id   : int32_t;
+         instance   : esp_event_handler_instance_t) return esp_err_t
+        with Import, Convention => C,
+             External_Name => "esp_event_handler_instance_unregister";
+
+   begin
+      return Result : constant esp_err_t :=
+        Imported (event_base, event_id, instance)
+      do
+         if Result = ESP_OK then
+            instance := esp_event_handler_instance_t (System.Null_Address);
+         end if;
+      end return;
+   end esp_event_handler_instance_unregister;
+
+   -------------------------------------------
+   -- esp_event_handler_instance_unregister --
+   -------------------------------------------
+
+   procedure esp_event_handler_instance_unregister
+     (event_base : esp_event_base_t;
+      event_id   : int32_t;
+      instance   : in out esp_event_handler_instance_t) is
+   begin
+      Ada_ESP_Check_Error
+        (esp_event_handler_instance_unregister
+          (event_base,
+           event_id,
+           instance));
+   end esp_event_handler_instance_unregister;
+
    --------------------------------
    -- esp_event_handler_register --
    --------------------------------

@@ -60,6 +60,16 @@ package ESPIDF.Event is
       event_handler_arg : System.Address;
       instance          : out esp_event_handler_instance_t);
 
+   function esp_event_handler_instance_unregister
+     (event_base : esp_event_base_t;
+      event_id   : int32_t;
+      instance   : in out esp_event_handler_instance_t) return esp_err_t;
+
+   procedure esp_event_handler_instance_unregister
+     (event_base : esp_event_base_t;
+      event_id   : int32_t;
+      instance   : in out esp_event_handler_instance_t);
+
 private
 
    type esp_event_handler_instance_t is new System.Address;
