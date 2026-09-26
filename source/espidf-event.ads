@@ -32,21 +32,21 @@ package ESPIDF.Event is
           External_Name => "esp_event_loop_create_default";
    --  Create default event loop.
    --  @return
-   --    - `ESP_OK`: Success
-   --    - `ESP_ERR_NO_MEM`: Cannot allocate memory for event loops list
-   --    - `ESP_ERR_INVALID_STATE`: Default event loop has already been
+   --    - `ESP_OK` if default event loop was created successfully
+   --    - `ESP_ERR_NO_MEM` if memory for event loops list cannot be allocated
+   --    - `ESP_ERR_INVALID_STATE` if default event loop has already been
    --      created
-   --    - `ESP_FAIL`: Failed to create task loop
-   --    - Others: Fail
+   --    - `ESP_FAIL` if task loop cannot be created
+   --    - other error codes on failure
 
    procedure esp_event_loop_create_default;
    --  Create default event loop.
    --  @raise ESPIDF_Error raised on error:
-   --    - `ESP_ERR_NO_MEM`: Cannot allocate memory for event loops list
-   --    - `ESP_ERR_INVALID_STATE`: Default event loop has already been
+   --    - `ESP_ERR_NO_MEM` if memory for event loops list cannot be allocated
+   --    - `ESP_ERR_INVALID_STATE` if default event loop has already been
    --      created
-   --    - `ESP_FAIL`: Failed to create task loop
-   --    - Others: Fail
+   --    - `ESP_FAIL` if task loop cannot be created
+   --    - other error codes on failure
 
    function esp_event_handler_register
      (event_base        : esp_event_base_t;
@@ -87,11 +87,11 @@ package ESPIDF.Event is
    --    Data, aside from event data, that is passed to the handler when it
    --    is called
    --  @return
-   --    - `ESP_OK`: Success
-   --    - `ESP_ERR_NO_MEM`: Cannot allocate memory for the handler
-   --    - `ESP_ERR_INVALID_ARG`: Invalid combination of event base and event
-   --      ID
-   --    - Others: Fail
+   --    - `ESP_OK` if handler was registered successfully
+   --    - `ESP_ERR_NO_MEM` if memory for the handler cannot be allocated
+   --    - `ESP_ERR_INVALID_ARG` if combination of event base and event ID is
+   --      invalid
+   --    - other error codes on failure
 
    procedure esp_event_handler_register
      (event_base        : esp_event_base_t;
@@ -129,10 +129,10 @@ package ESPIDF.Event is
    --    Data, aside from event data, that is passed to the handler when it
    --    is called
    --  @raise ESPIDF_Error raised on error:
-   --    - `ESP_ERR_NO_MEM`: Cannot allocate memory for the handler
-   --    - `ESP_ERR_INVALID_ARG`: Invalid combination of event base and event
-   --      ID
-   --    - Others: Fail
+   --    - `ESP_ERR_NO_MEM` if memory for the handler cannot be allocated
+   --    - `ESP_ERR_INVALID_ARG` if combination of event base and event ID is
+   --      invalid
+   --    - other error codes on failure
 
    function esp_event_handler_instance_register
      (event_base        : esp_event_base_t;
@@ -167,11 +167,11 @@ package ESPIDF.Event is
    --    and yields distinct instance objects. The data can be the same for
    --    all registrations.
    --  @return
-   --    - `ESP_OK`: Success
-   --    - `ESP_ERR_NO_MEM`: Cannot allocate memory for the handler
-   --    - `ESP_ERR_INVALID_ARG`: Invalid combination of event base and event
-   --      ID
-   --    - Others: Fail
+   --    - `ESP_OK` if handler instance was registered successfully
+   --    - `ESP_ERR_NO_MEM` if memory for the handler cannot be allocated
+   --    - `ESP_ERR_INVALID_ARG` if combination of event base and event ID is
+   --      invalid
+   --    - other error codes on failure
 
    procedure esp_event_handler_instance_register
      (event_base        : esp_event_base_t;
@@ -204,10 +204,10 @@ package ESPIDF.Event is
    --    and yields distinct instance objects. The data can be the same for
    --    all registrations.
    --  @raise ESPIDF_Error raised on error:
-   --    - `ESP_ERR_NO_MEM`: Cannot allocate memory for the handler
-   --    - `ESP_ERR_INVALID_ARG`: Invalid combination of event base and event
-   --      ID
-   --    - Others: Fail
+   --    - `ESP_ERR_NO_MEM` if memory for the handler cannot be allocated
+   --    - `ESP_ERR_INVALID_ARG` if combination of event base and event ID is
+   --      invalid
+   --    - other error codes on failure
 
    function esp_event_handler_instance_unregister
      (event_base : esp_event_base_t;
@@ -225,10 +225,10 @@ package ESPIDF.Event is
    --    The instance object of the registration to be unregistered. It is
    --    reset to null value on success.
    --  @return
-   --    - `ESP_OK`: Success
-   --    - `ESP_ERR_INVALID_ARG`: Invalid combination of event base and event
-   --      ID
-   --    - Others: Fail
+   --    - `ESP_OK` if handler instance was unregistered successfully
+   --    - `ESP_ERR_INVALID_ARG` if combination of event base and event ID is
+   --      invalid
+   --    - other error codes on failure
 
    procedure esp_event_handler_instance_unregister
      (event_base : esp_event_base_t;
@@ -246,9 +246,9 @@ package ESPIDF.Event is
    --    The instance object of the registration to be unregistered. It is
    --    reset to null value on success.
    --  @raise ESPIDF_Error raised on error:
-   --    - `ESP_ERR_INVALID_ARG`: Invalid combination of event base and event
-   --      ID
-   --    - Others: Fail
+   --    - `ESP_ERR_INVALID_ARG` if combination of event base and event ID is
+   --      invalid
+   --    - other error codes on failure
 
 private
 
